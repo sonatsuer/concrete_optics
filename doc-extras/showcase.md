@@ -1,3 +1,6 @@
+# Showcase
+
+```elixir
 defmodule ConcreteOpticsTest do
   @moduledoc """
   This test file is a showcase of optics supported by the library.
@@ -9,3 +12,5 @@ defmodule ConcreteOpticsTest do
     assert ConcreteOptics.hello() == :world
   end
 end
+```
+

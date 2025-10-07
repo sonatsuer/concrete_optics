@@ -1,18 +1,8 @@
 defmodule ConcreteOptics do
   @moduledoc """
-  Documentation for `ConcreteOptics`.
+  Re-export module for convenience. Includes all standard optics
+  and optic constructors. See the README file for the general design
+  and usage examples.
   """
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> ConcreteOptics.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
 end

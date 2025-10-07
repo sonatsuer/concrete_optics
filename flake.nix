@@ -2,7 +2,7 @@
   description = "Development environment for Elixir.";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -10,10 +10,11 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        erlangVersion = pkgs.erlang_26;
+        erlangVersion = pkgs.erlang_27;
         erlangPackages = pkgs.beam.packagesWith erlangVersion;
-        elixir = erlangPackages.elixir_1_15;
+        elixir = erlangPackages.elixir;
         elixir-ls = erlangPackages.elixir-ls;
+        ex_doc = erlangPackages.ex_doc;
 
       in
       {
@@ -21,6 +22,7 @@
           packages = [
             elixir
             elixir-ls
+            ex_doc
             erlangVersion
             pkgs.git
             pkgs.fish
