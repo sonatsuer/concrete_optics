@@ -17,8 +17,8 @@ defmodule ConcreteOptics.MixProject do
 
       #Document related
       name: "ConcreteOptics",
-      source_url: "",
-      homepage_url: "",
+      source_url: "https://github.com/sonatsuer/concrete_optics/blob/master",
+      homepage_url: "https://sonatsuer.github.io/concrete_optics/ConcreteOptics.html",
       docs: &docs/0,
     ]
   end
