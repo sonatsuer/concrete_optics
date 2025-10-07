@@ -1,7 +1,7 @@
 defmodule ConcreteOptics.MixProject do
   use Mix.Project
 
-  @source_url "https://github.com/beatrichartz/csv"
+  @source_url "https://github.com/sonatsuer/concrete_optics"
 
   def project do
     [
@@ -17,7 +17,8 @@ defmodule ConcreteOptics.MixProject do
 
       #Document related
       name: "ConcreteOptics",
-      source_url: "https://github.com/sonatsuer/concrete_optics/blob/master",
+      source_url: @source_url,
+      source_ref: "master",
       homepage_url: "https://sonatsuer.github.io/concrete_optics/ConcreteOptics.html",
       docs: &docs/0,
     ]
