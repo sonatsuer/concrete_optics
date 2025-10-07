@@ -17,9 +17,8 @@ defmodule ConcreteOptics.MixProject do
 
       #Document related
       name: "ConcreteOptics",
-      source_url: @source_url,
-      source_ref: "master",
       homepage_url: "https://sonatsuer.github.io/concrete_optics/ConcreteOptics.html",
+      source_url: @source_url,
       docs: &docs/0,
     ]
   end
@@ -36,7 +35,7 @@ defmodule ConcreteOptics.MixProject do
   defp deps do
     [
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
-      {:ex_doc, "~> 0.38", only: :dev, runtime: false, warn_if_outdated: true}
+      {:ex_doc, "~> 0.38.4", only: :dev, runtime: false, warn_if_outdated: true}
     ]
   end
 
