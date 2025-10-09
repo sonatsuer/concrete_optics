@@ -4,5 +4,4 @@ defmodule ConcreteOptics do
   and optic constructors. See the README file for the general design
   and usage examples.
   """
-
 end

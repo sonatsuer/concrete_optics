@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="dist/html-elixir-RLZO5U2C.css" />
 
-    <script defer src="dist/sidebar_items-F1C3FD49.js"></script>
+    <script defer src="dist/sidebar_items-E9AED6B4.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-Y223O6DN.js"></script>
 
@@ -118,9 +118,12 @@ ConcreteOptics
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#t:tp/4" data-no-tooltip="" translate="no">tp(s, t, a, b)</a>
+        <a href="#t:t/4" data-no-tooltip="" translate="no">t(s, t, a, b)</a>
 
       </div>
+
+        <div class="summary-synopsis"><p>Each optic comes with four parameters. Actual <code class="inline">traverse</code> has a more
+complicated type but it is neither easy nor useful to model it in Elixir.</p></div>
 
     </div>
 
@@ -174,7 +177,7 @@ ConcreteOptics
       <h1 class="signature" translate="no">optics()</h1>
 
 
-        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/core.ex#L24" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/core.ex#L21" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -192,17 +195,17 @@ ConcreteOptics
 <p>Complete list of supported optics.</p>
   </section>
 </section>
-<section class="detail" id="t:tp/4">
+<section class="detail" id="t:t/4">
 
   <div class="detail-header">
-    <a href="#t:tp/4" class="detail-link" data-no-tooltip="" aria-label="Link to this type">
+    <a href="#t:t/4" class="detail-link" data-no-tooltip="" aria-label="Link to this type">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
     <div class="heading-with-actions">
-      <h1 class="signature" translate="no">tp(s, t, a, b)</h1>
+      <h1 class="signature" translate="no">t(s, t, a, b)</h1>
 
 
-        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/core.ex#L15" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/core.ex#L12" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -213,17 +216,18 @@ ConcreteOptics
 
       <div class="specs">
 
-          <pre translate="no"><span class="attribute">@type</span> tp(s, t, a, b) :: %ConcreteOptics.Core{
+          <pre translate="no"><span class="attribute">@type</span> t(s, t, a, b) :: %ConcreteOptics.Core{
   over: ((a -&gt; b) -&gt; (s -&gt; t)),
   review: (b -&gt; t) | nil,
   to_list: (s -&gt; [a]),
-  traverse: ((a -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()) -&gt; (s -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>())),
+  traverse: (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>() -&gt; ((a -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()) -&gt; (s -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()))),
   view: (s -&gt; a) | nil
 }</pre>
 
       </div>
 
-
+<p>Each optic comes with four parameters. Actual <code class="inline">traverse</code> has a more
+complicated type but it is neither easy nor useful to model it in Elixir.</p>
   </section>
 </section>
 
@@ -249,7 +253,7 @@ ConcreteOptics
       <h1 class="signature" translate="no">classify(opt)</h1>
 
 
-        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/core.ex#L30" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/core.ex#L27" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -260,7 +264,7 @@ ConcreteOptics
 
       <div class="specs">
 
-          <pre translate="no"><span class="attribute">@spec</span> classify(<a href="#t:tp/4">tp</a>(s(), t(), a(), b())) :: <a href="#t:optics/0">optics</a>()</pre>
+          <pre translate="no"><span class="attribute">@spec</span> classify(<a href="#t:t/4">t</a>(S, T, A, B)) :: <a href="#t:optics/0">optics</a>()</pre>
 
       </div>
 
@@ -277,7 +281,7 @@ ConcreteOptics
       <h1 class="signature" translate="no">compose(op1, op2)</h1>
 
 
-        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/core.ex#L66" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/core.ex#L69" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -288,8 +292,7 @@ ConcreteOptics
 
       <div class="specs">
 
-          <pre translate="no"><span class="attribute">@spec</span> compose(<a href="#t:tp/4">tp</a>(s(), t(), as(), bt()), <a href="#t:tp/4">tp</a>(as(), bt(), a(), b())) ::
-  <a href="#t:tp/4">tp</a>(s(), t(), a(), b())</pre>
+          <pre translate="no"><span class="attribute">@spec</span> compose(<a href="#t:t/4">t</a>(S, T, AS, BT), <a href="#t:t/4">t</a>(AS, BT, A, B)) :: <a href="#t:t/4">t</a>(S, T, A, B)</pre>
 
       </div>
 

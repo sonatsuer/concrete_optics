@@ -8,7 +8,7 @@
     <meta name="project" content="ConcreteOptics v0.1.0">
 
 
-    <title>ConcreteOptics.Iso — ConcreteOptics v0.1.0</title>
+    <title>ConcreteOptics.Applicative.Id — ConcreteOptics v0.1.0</title>
 
     <link rel="stylesheet" href="dist/html-elixir-RLZO5U2C.css" />
 
@@ -75,12 +75,12 @@ ConcreteOptics
 <div id="top-content">
   <div class="heading-with-actions top-heading">
     <h1>
-      <span translate="no">ConcreteOptics.Iso</span> 
+      <span translate="no">ConcreteOptics.Applicative.Id</span> 
       <small class="app-vsn" translate="no">(ConcreteOptics v0.1.0)</small>
 
     </h1>
 
-      <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/iso.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/applicative.ex#L21" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -89,7 +89,7 @@ ConcreteOptics
 
 
     <section id="moduledoc">
-<p>Isomorphism as an optic.</p>
+<p>The identity applicative without a wrapper. all operations are essentially noop.</p>
     </section>
 
 </div>
@@ -101,6 +101,20 @@ ConcreteOptics
       </a>
       <span class="text">Summary</span>
     </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:t/1" data-no-tooltip="" translate="no">t(a)</a>
+
+      </div>
+
+    </div>
+
+</div>
 <div class="summary-functions summary">
   <h2>
     <a href="#functions">Functions</a>
@@ -108,21 +122,25 @@ ConcreteOptics
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#eq/0" data-no-tooltip="" translate="no">eq()</a>
+        <a href="#lift1/2" data-no-tooltip="" translate="no">lift1(f, a)</a>
 
       </div>
-
-        <div class="summary-synopsis"><p>The unit optic under optic composition.</p></div>
 
     </div>
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#mk_iso/2" data-no-tooltip="" translate="no">mk_iso(view, review)</a>
+        <a href="#lift2/3" data-no-tooltip="" translate="no">lift2(f, a, b)</a>
 
       </div>
 
-        <div class="summary-synopsis"><p>Constructs an isomorphism from given <code class="inline">view</code> and <code class="inline">review</code> functions.</p></div>
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#pure/1" data-no-tooltip="" translate="no">pure(a)</a>
+
+      </div>
 
     </div>
 
@@ -130,6 +148,47 @@ ConcreteOptics
 
   </section>
 
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+
+    <div class="types-list">
+<section class="detail" id="t:t/1">
+
+  <div class="detail-header">
+    <a href="#t:t/1" class="detail-link" data-no-tooltip="" aria-label="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">t(a)</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/applicative.ex#L25" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> t(a) :: a</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
 
   <section id="functions" class="details-list">
     <h1 class="section-heading">
@@ -140,17 +199,17 @@ ConcreteOptics
     </h1>
 
     <div class="functions-list">
-<section class="detail" id="eq/0">
+<section class="detail" id="lift1/2">
 
   <div class="detail-header">
-    <a href="#eq/0" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+    <a href="#lift1/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
     <div class="heading-with-actions">
-      <h1 class="signature" translate="no">eq()</h1>
+      <h1 class="signature" translate="no">lift1(f, a)</h1>
 
 
-        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/iso.ex#L45" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/applicative.ex#L32" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -161,24 +220,24 @@ ConcreteOptics
 
       <div class="specs">
 
-          <pre translate="no"><span class="attribute">@spec</span> eq() :: <a href="ConcreteOptics.Core.html#t:t/4">ConcreteOptics.Core.t</a>(S, T, S, T)</pre>
+          <pre translate="no"><span class="attribute">@spec</span> lift1((A -&gt; B), <a href="#t:t/1">t</a>(A)) :: <a href="#t:t/1">t</a>(A)</pre>
 
       </div>
 
-<p>The unit optic under optic composition.</p>
+
   </section>
 </section>
-<section class="detail" id="mk_iso/2">
+<section class="detail" id="lift2/3">
 
   <div class="detail-header">
-    <a href="#mk_iso/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+    <a href="#lift2/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
     <div class="heading-with-actions">
-      <h1 class="signature" translate="no">mk_iso(view, review)</h1>
+      <h1 class="signature" translate="no">lift2(f, a, b)</h1>
 
 
-        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/iso.ex#L11" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/applicative.ex#L36" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -189,11 +248,39 @@ ConcreteOptics
 
       <div class="specs">
 
-          <pre translate="no"><span class="attribute">@spec</span> mk_iso((S -&gt; A), (B -&gt; T)) :: <a href="ConcreteOptics.Core.html#t:t/4">ConcreteOptics.Core.t</a>(S, T, A, B)</pre>
+          <pre translate="no"><span class="attribute">@spec</span> lift2((A, B -&gt; C), <a href="#t:t/1">t</a>(A), <a href="#t:t/1">t</a>(B)) :: <a href="#t:t/1">t</a>(C)</pre>
 
       </div>
 
-<p>Constructs an isomorphism from given <code class="inline">view</code> and <code class="inline">review</code> functions.</p>
+
+  </section>
+</section>
+<section class="detail" id="pure/1">
+
+  <div class="detail-header">
+    <a href="#pure/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">pure(a)</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/applicative.ex#L28" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> pure(A) :: <a href="#t:t/1">t</a>(A)</pre>
+
+      </div>
+
+
   </section>
 </section>
 

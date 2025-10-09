@@ -8,18 +8,18 @@ defmodule ConcreteOptics.MixProject do
       app: :concrete_optics,
       description: "Simple minded optics implementation",
       version: "0.1.0",
-      elixir: "~> 1.15",
+      elixir: "~> 1.18.4",
       deps: deps(),
       package: package(),
       elixirc_paths: elixirc_paths(),
       description: "Simple minded optics implementation",
       default_env: :dev,
 
-      #Document related
+      # Document related
       name: "ConcreteOptics",
       homepage_url: "https://sonatsuer.github.io/concrete_optics/ConcreteOptics.html",
       source_url: @source_url,
-      docs: &docs/0,
+      docs: &docs/0
     ]
   end
 
@@ -51,10 +51,10 @@ defmodule ConcreteOptics.MixProject do
     [
       main: "ConcreteOptics",
       api_reference: false,
-      extras:
-        ["doc-extras/intro.md": [title: "Introduction"],
-         "doc-extras/showcase.md": [title: "Showcase"],
-        ]
+      extras: [
+        "doc-extras/intro.md": [title: "Introduction"],
+        "doc-extras/showcase.md": [title: "Showcase"]
+      ]
     ]
   end
 end
