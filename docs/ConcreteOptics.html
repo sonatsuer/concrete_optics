@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="dist/html-elixir-RLZO5U2C.css" />
 
-    <script defer src="dist/sidebar_items-E9AED6B4.js"></script>
+    <script defer src="dist/sidebar_items-A14431A3.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-Y223O6DN.js"></script>
 
@@ -89,13 +89,286 @@ ConcreteOptics
 
 
     <section id="moduledoc">
-<p>Re-export module for convenience. Includes all standard optics
-and optic constructors. See the README file for the general design
-and usage examples.</p>
+<p>Re-export module for convenience. Includes all standard optics,
+optic constructors and optic axioms.</p>
     </section>
 
 </div>
 
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:optic/4" data-no-tooltip="" translate="no">optic(s, t, a, b)</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#%3E%3E%3E/2" data-no-tooltip="" translate="no">op1 &gt;&gt;&gt; op2</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Infix version of optic composition</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#compose/2" data-no-tooltip="" translate="no">compose(op1, op2)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>See <a><code class="inline">ConcreteOptics.Core.compose/2</code></a>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#mk_iso/2" data-no-tooltip="" translate="no">mk_iso(f, g)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>See <a><code class="inline">ConcreteOptics.Iso.mk_iso/2</code></a>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#review_view/1" data-no-tooltip="" translate="no">review_view(opt)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>See <a><code class="inline">ConcreteOptics.Iso.Axioms.review_view/1</code></a>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#view_review/1" data-no-tooltip="" translate="no">view_review(opt)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>See <a><code class="inline">ConcreteOptics.Iso.Axioms.view_review/1</code></a>.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+
+    <div class="types-list">
+<section class="detail" id="t:optic/4">
+
+  <div class="detail-header">
+    <a href="#t:optic/4" class="detail-link" data-no-tooltip="" aria-label="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">optic(s, t, a, b)</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics.ex#L7" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> optic(s, t, a, b) :: <a href="ConcreteOptics.Core.html#t:t/4">ConcreteOptics.Core.t</a>(s, t, a, b)</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+
+    <div class="functions-list">
+<section class="detail" id="%3E%3E%3E/2">
+
+  <div class="detail-header">
+    <a href="#%3E%3E%3E/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">op1 &gt;&gt;&gt; op2</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics.ex#L16" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> <a href="#t:optic/4">optic</a>(S, T, AS, BT) &gt;&gt;&gt; <a href="#t:optic/4">optic</a>(AS, BT, A, B) :: <a href="#t:optic/4">optic</a>(S, T, A, B)</pre>
+
+      </div>
+
+<p>Infix version of optic composition</p>
+  </section>
+</section>
+<section class="detail" id="compose/2">
+
+  <div class="detail-header">
+    <a href="#compose/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">compose(op1, op2)</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics.ex#L10" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> compose(<a href="#t:optic/4">optic</a>(S, T, AS, BT), <a href="#t:optic/4">optic</a>(AS, BT, A, B)) :: <a href="#t:optic/4">optic</a>(S, T, A, B)</pre>
+
+      </div>
+
+<p>See <a href="ConcreteOptics.Core.html#compose/2"><code class="inline">ConcreteOptics.Core.compose/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="mk_iso/2">
+
+  <div class="detail-header">
+    <a href="#mk_iso/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">mk_iso(f, g)</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics.ex#L19" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> mk_iso((S -&gt; A), (B -&gt; T)) :: <a href="#t:optic/4">optic</a>(S, T, A, B)</pre>
+
+      </div>
+
+<p>See <a href="ConcreteOptics.Iso.html#mk_iso/2"><code class="inline">ConcreteOptics.Iso.mk_iso/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="review_view/1">
+
+  <div class="detail-header">
+    <a href="#review_view/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">review_view(opt)</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics.ex#L25" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> review_view(<a href="#t:optic/4">optic</a>(S, T, A, B)) :: (S -&gt; bool())</pre>
+
+      </div>
+
+<p>See <a href="ConcreteOptics.Iso.Axioms.html#review_view/1"><code class="inline">ConcreteOptics.Iso.Axioms.review_view/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="view_review/1">
+
+  <div class="detail-header">
+    <a href="#view_review/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">view_review(opt)</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics.ex#L22" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> view_review(<a href="#t:optic/4">optic</a>(S, T, A, B)) :: (S -&gt; bool())</pre>
+
+      </div>
+
+<p>See <a href="ConcreteOptics.Iso.Axioms.html#view_review/1"><code class="inline">ConcreteOptics.Iso.Axioms.view_review/1</code></a>.</p>
+  </section>
+</section>
+
+    </div>
+  </section>
 
     <footer class="footer">
       <p>

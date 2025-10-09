@@ -35,7 +35,9 @@ defmodule ConcreteOptics.MixProject do
   defp deps do
     [
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
-      {:ex_doc, "~> 0.38.4", only: :dev, runtime: false, warn_if_outdated: true}
+      {:ex_doc, "~> 0.38.4", only: :dev, runtime: false, warn_if_outdated: true},
+      {:stream_data, "~> 1.2.0", only: [:dev, :test]},
+      {:ratio, "4.0.1", only: [:dev, :test]}
     ]
   end
 

@@ -8,7 +8,7 @@
     <meta name="project" content="ConcreteOptics v0.1.0">
 
 
-    <title>ConcreteOptics.Iso — ConcreteOptics v0.1.0</title>
+    <title>ConcreteOptics.Iso.Axioms — ConcreteOptics v0.1.0</title>
 
     <link rel="stylesheet" href="dist/html-elixir-RLZO5U2C.css" />
 
@@ -75,12 +75,12 @@ ConcreteOptics
 <div id="top-content">
   <div class="heading-with-actions top-heading">
     <h1>
-      <span translate="no">ConcreteOptics.Iso</span> 
+      <span translate="no">ConcreteOptics.Iso.Axioms</span> 
       <small class="app-vsn" translate="no">(ConcreteOptics v0.1.0)</small>
 
     </h1>
 
-      <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/iso.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/iso.ex#L50" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -89,7 +89,8 @@ ConcreteOptics
 
 
     <section id="moduledoc">
-<p>Isomorphism as an optic.</p>
+<p>Axioms that a lawful isomorphism should satisfy. These are meant to be
+used in property tests for custom isomorphisms constructed using <code class="inline">ConcreteOptics.Iso.mk_iso</code>.</p>
     </section>
 
 </div>
@@ -108,21 +109,21 @@ ConcreteOptics
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#eq/0" data-no-tooltip="" translate="no">eq()</a>
+        <a href="#review_view/1" data-no-tooltip="" translate="no">review_view(optic)</a>
 
       </div>
 
-        <div class="summary-synopsis"><p>The unit optic under optic composition.</p></div>
+        <div class="summary-synopsis"><p>The isomorphism law which states that applying review and then view yields the original value.</p></div>
 
     </div>
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#mk_iso/2" data-no-tooltip="" translate="no">mk_iso(view, review)</a>
+        <a href="#view_review/1" data-no-tooltip="" translate="no">view_review(optic)</a>
 
       </div>
 
-        <div class="summary-synopsis"><p>Constructs an isomorphism from given <code class="inline">view</code> and <code class="inline">review</code> functions.</p></div>
+        <div class="summary-synopsis"><p>The isomorphism law which states that applying view and then review yields the original value.</p></div>
 
     </div>
 
@@ -140,17 +141,17 @@ ConcreteOptics
     </h1>
 
     <div class="functions-list">
-<section class="detail" id="eq/0">
+<section class="detail" id="review_view/1">
 
   <div class="detail-header">
-    <a href="#eq/0" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+    <a href="#review_view/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
     <div class="heading-with-actions">
-      <h1 class="signature" translate="no">eq()</h1>
+      <h1 class="signature" translate="no">review_view(optic)</h1>
 
 
-        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/iso.ex#L45" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/iso.ex#L62" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -161,24 +162,24 @@ ConcreteOptics
 
       <div class="specs">
 
-          <pre translate="no"><span class="attribute">@spec</span> eq() :: <a href="ConcreteOptics.Core.html#t:t/4">ConcreteOptics.Core.t</a>(S, T, S, T)</pre>
+          <pre translate="no"><span class="attribute">@spec</span> review_view(<a href="ConcreteOptics.Core.html#t:t/4">ConcreteOptics.Core.t</a>(S, T, A, B)) :: (S -&gt; bool())</pre>
 
       </div>
 
-<p>The unit optic under optic composition.</p>
+<p>The isomorphism law which states that applying review and then view yields the original value.</p>
   </section>
 </section>
-<section class="detail" id="mk_iso/2">
+<section class="detail" id="view_review/1">
 
   <div class="detail-header">
-    <a href="#mk_iso/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+    <a href="#view_review/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
     <div class="heading-with-actions">
-      <h1 class="signature" translate="no">mk_iso(view, review)</h1>
+      <h1 class="signature" translate="no">view_review(optic)</h1>
 
 
-        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/iso.ex#L11" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/iso.ex#L75" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -189,11 +190,11 @@ ConcreteOptics
 
       <div class="specs">
 
-          <pre translate="no"><span class="attribute">@spec</span> mk_iso((S -&gt; A), (B -&gt; T)) :: <a href="ConcreteOptics.Core.html#t:t/4">ConcreteOptics.Core.t</a>(S, T, A, B)</pre>
+          <pre translate="no"><span class="attribute">@spec</span> view_review(<a href="ConcreteOptics.Core.html#t:t/4">ConcreteOptics.Core.t</a>(S, T, A, B)) :: (S -&gt; bool())</pre>
 
       </div>
 
-<p>Constructs an isomorphism from given <code class="inline">view</code> and <code class="inline">review</code> functions.</p>
+<p>The isomorphism law which states that applying view and then review yields the original value.</p>
   </section>
 </section>
 

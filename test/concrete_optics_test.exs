@@ -1,6 +1,3 @@
-# Showcase
-
-```elixir
 defmodule ConcreteOpticsTest do
   @moduledoc """
   This test file is a showcase of optics supported by the library
@@ -83,5 +80,3 @@ defmodule ConcreteOpticsTest do
     assert !fahrenheit_freezing?({:fahrenheit, Ratio.new(35, 1)})
   end
 end
-```
-
