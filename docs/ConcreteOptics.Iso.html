@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="dist/html-elixir-RLZO5U2C.css" />
 
-    <script defer src="dist/sidebar_items-A14431A3.js"></script>
+    <script defer src="dist/sidebar_items-4A668056.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-Y223O6DN.js"></script>
 
@@ -112,7 +112,19 @@ ConcreteOptics
 
       </div>
 
-        <div class="summary-synopsis"><p>The unit optic under optic composition.</p></div>
+        <div class="summary-synopsis"><p>The unit optic under optic composition. It is the unit among <em>all</em> optics,
+not just among isomorphisms.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#invert_iso!/1" data-no-tooltip="" translate="no">invert_iso!(opt)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>This function reverses an iso by swapping <code class="inline">review</code> and <code class="inline">view</code>. If the provided
+optic is not an iso the function raises an <a><code class="inline">ArgumentError</code></a> exception.</p></div>
 
     </div>
 
@@ -123,6 +135,20 @@ ConcreteOptics
       </div>
 
         <div class="summary-synopsis"><p>Constructs an isomorphism from given <code class="inline">view</code> and <code class="inline">review</code> functions.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#transport!/2" data-no-tooltip="" translate="no">transport!(opt, f)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The <a><code class="inline">transport!/2</code></a> function implements an idea known as <em>transport of structure</em>
+in universal algebra. Transporting a function means to move its implementation to a
+different type by going back and forth between the types. The first argument of
+<a><code class="inline">transport!/2</code></a> needs to be an iso. Otherwise the function throws an <a><code class="inline">ArgumentError</code></a>
+exception.</p></div>
 
     </div>
 
@@ -150,7 +176,7 @@ ConcreteOptics
       <h1 class="signature" translate="no">eq()</h1>
 
 
-        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/iso.ex#L45" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/iso.ex#L62" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -165,7 +191,38 @@ ConcreteOptics
 
       </div>
 
-<p>The unit optic under optic composition.</p>
+<p>The unit optic under optic composition. It is the unit among <em>all</em> optics,
+not just among isomorphisms.</p>
+  </section>
+</section>
+<section class="detail" id="invert_iso!/1">
+
+  <div class="detail-header">
+    <a href="#invert_iso!/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">invert_iso!(opt)</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/iso.ex#L46" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> invert_iso!(<a href="ConcreteOptics.Core.html#t:t/4">ConcreteOptics.Core.t</a>(S, T, A, B)) ::
+  <a href="ConcreteOptics.Core.html#t:t/4">ConcreteOptics.Core.t</a>(S, T, A, B)</pre>
+
+      </div>
+
+<p>This function reverses an iso by swapping <code class="inline">review</code> and <code class="inline">view</code>. If the provided
+optic is not an iso the function raises an <a href="https://hexdocs.pm/elixir/ArgumentError.html"><code class="inline">ArgumentError</code></a> exception.</p>
   </section>
 </section>
 <section class="detail" id="mk_iso/2">
@@ -194,6 +251,38 @@ ConcreteOptics
       </div>
 
 <p>Constructs an isomorphism from given <code class="inline">view</code> and <code class="inline">review</code> functions.</p>
+  </section>
+</section>
+<section class="detail" id="transport!/2">
+
+  <div class="detail-header">
+    <a href="#transport!/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">transport!(opt, f)</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/iso.ex#L74" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> transport!(<a href="ConcreteOptics.Core.html#t:t/4">ConcreteOptics.Core.t</a>(S, T, A, B), (A -&gt; B)) :: (S -&gt; T)</pre>
+
+      </div>
+
+<p>The <a href="#transport!/2"><code class="inline">transport!/2</code></a> function implements an idea known as <em>transport of structure</em>
+in universal algebra. Transporting a function means to move its implementation to a
+different type by going back and forth between the types. The first argument of
+<a href="#transport!/2"><code class="inline">transport!/2</code></a> needs to be an iso. Otherwise the function throws an <a href="https://hexdocs.pm/elixir/ArgumentError.html"><code class="inline">ArgumentError</code></a>
+exception.</p>
   </section>
 </section>
 

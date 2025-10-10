@@ -79,4 +79,13 @@ defmodule ConcreteOpticsTest do
     assert fahrenheit_freezing?({:fahrenheit, Ratio.new(30, 1)})
     assert !fahrenheit_freezing?({:fahrenheit, Ratio.new(35, 1)})
   end
+
+  # This is fine but not really interesting. For a slightly more interesting
+  # example, consider the following function.
+
+  def increase_celsius({:celsius, diff}) do
+    fn {:celsius, r} ->
+      {:celsius, Ratio.add(r, diff)}
+    end
+  end
 end

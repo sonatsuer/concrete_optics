@@ -39,11 +39,47 @@ defmodule ConcreteOptics.Iso do
   end
 
   @doc """
-  The unit optic under optic composition.
+  This function reverses an iso by swapping `review` and `view`. If the provided
+  optic is not an iso the function raises an `ArgumentError` exception.
+  """
+  @spec invert_iso!(Core.t(S, T, A, B)) :: Core.t(S, T, A, B)
+  def invert_iso!(opt) do
+    optic_type = Core.classify(opt)
+    if optic_type != :iso do
+      raise ArgumentError, message: "{Cannot invert #{Atom.to_string(optic_type)}. Only isos can be inverted"
+    else
+      new_view = opt.review
+      new_review = opt.view
+      mk_iso(new_view, new_review)
+    end
+  end
+
+  @doc """
+  The unit optic under optic composition. It is the unit among _all_ optics,
+  not just among isomorphisms.
   """
   @spec eq() :: Core.t(S, T, S, T)
   def eq do
     ConcreteOptics.Iso.mk_iso(&id/1, &id/1)
+  end
+
+  @doc """
+  The `transport!/2` function implements an idea known as _transport of structure_
+  in universal algebra. Transporting a function means to move its implementation to a
+  different type by going back and forth between the types. The first argument of
+  `transport!/2` needs to be an iso. Otherwise the function throws an `ArgumentError`
+  exception.
+  """
+  @spec transport!(Core.t(S, T, A, B), (A -> B)) :: (S -> T)
+  def transport!(opt, f) do
+    optic_type = Core.classify(opt)
+    if optic_type != :iso do
+      raise ArgumentError, message: "{Cannot transport via #{Atom.to_string(optic_type)}. Only isos allow transport."
+    else
+      fn x ->
+         x |> opt.view.() |> f.() |> opt.review.()
+      end
+    end
   end
 end
 

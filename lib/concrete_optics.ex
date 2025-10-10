@@ -1,6 +1,6 @@
 defmodule ConcreteOptics do
   @moduledoc """
-  Re-export module for convenience. Includes all standard optics,
+  Mostly a re-export module for convenience. Includes all standard optics,
   optic constructors and optic axioms.
   """
 
