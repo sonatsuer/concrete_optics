@@ -25,7 +25,7 @@ defmodule ConcreteOpticsTest do
       {:fahrenheit, f} -> {:celsius, (f - 32) * Ratio.new(5, 9)}
     end
 
-    ConcreteOptics.mk_iso(celsius_to_fahrenheit, fahrenheit_to_celsius)
+    ConcreteOptics.new(celsius_to_fahrenheit, fahrenheit_to_celsius)
   end
 
   # Note that we use rational numbers to avoid rounding errors and

@@ -13,7 +13,7 @@ defmodule ConcreteOptics.IsoTest do
       n -> n - 1
     end
 
-    ConcreteOptics.mk_iso(increase, decrease)
+    ConcreteOptics.new(increase, decrease)
   end
 
   property "shift_iso is an iso" do

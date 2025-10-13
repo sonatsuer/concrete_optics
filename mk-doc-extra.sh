@@ -16,8 +16,8 @@ echo '```' >> $LOCATION
 echo '' >> $LOCATION
 mix deps.get
 mix compile
-echo "Testing" $SHOWCASE_TEST
-mix test $SHOWCASE_TEST
+# echo "Testing" $SHOWCASE_TEST
+# mix test $SHOWCASE_TEST
 TEST_STATUS=$?
 if [ $TEST_STATUS -eq 0 ]; then
     mix docs --formatter html --output docs

@@ -2,14 +2,15 @@ defmodule ConcreteOptics.Iso do
   @moduledoc """
   Isomorphism as an optic.
   """
-  alias ConcreteOptics.Core
+  use ConcreteOptics.Core.Common, capabilities: [:view, :review, :over, :to_list, :traverse]
+  alias ConcreteOptics.Iso
 
   @doc """
   Constructs an isomorphism from given `view` and `review` functions.
   """
-  @spec mk_iso((S -> A), (B -> T)) :: Core.t(S, T, A, B)
-  def mk_iso(view, review) do
-    %Core{
+  @spec new((S -> A), (B -> T)) :: t(S, T, A, B)
+  def new(view, review) do
+    %Iso{
       view: view,
       review: review,
       to_list: fn x -> [view.(x)] end,
@@ -34,33 +35,26 @@ defmodule ConcreteOptics.Iso do
     }
   end
 
+  @doc """
+  TODO
+  """
+  @spec invert_iso(t(S, T, A, B)) :: t(S, T, A, B)
+  def invert_iso(opt) do
+    new_view = opt.review
+    new_review = opt.view
+    new(new_view, new_review)
+  end
+
   defp id(x) do
     x
   end
 
   @doc """
-  This function reverses an iso by swapping `review` and `view`. If the provided
-  optic is not an iso the function raises an `ArgumentError` exception.
+  TODO
   """
-  @spec invert_iso!(Core.t(S, T, A, B)) :: Core.t(S, T, A, B)
-  def invert_iso!(opt) do
-    optic_type = Core.classify(opt)
-    if optic_type != :iso do
-      raise ArgumentError, message: "{Cannot invert #{Atom.to_string(optic_type)}. Only isos can be inverted"
-    else
-      new_view = opt.review
-      new_review = opt.view
-      mk_iso(new_view, new_review)
-    end
-  end
-
-  @doc """
-  The unit optic under optic composition. It is the unit among _all_ optics,
-  not just among isomorphisms.
-  """
-  @spec eq() :: Core.t(S, T, S, T)
+  @spec eq() :: t(S, T, S, T)
   def eq do
-    ConcreteOptics.Iso.mk_iso(&id/1, &id/1)
+    Iso.new(&id/1, &id/1)
   end
 
   @doc """
@@ -70,15 +64,10 @@ defmodule ConcreteOptics.Iso do
   `transport!/2` needs to be an iso. Otherwise the function throws an `ArgumentError`
   exception.
   """
-  @spec transport!(Core.t(S, T, A, B), (A -> B)) :: (S -> T)
-  def transport!(opt, f) do
-    optic_type = Core.classify(opt)
-    if optic_type != :iso do
-      raise ArgumentError, message: "{Cannot transport via #{Atom.to_string(optic_type)}. Only isos allow transport."
-    else
-      fn x ->
-         x |> opt.view.() |> f.() |> opt.review.()
-      end
+  @spec transport(t(S, T, A, B), (A -> B)) :: (S -> T)
+  def transport(opt, f) do
+    fn x ->
+       x |> opt.view.() |> f.() |> opt.review.()
     end
   end
 end
@@ -86,12 +75,12 @@ end
 defmodule ConcreteOptics.Iso.Axioms do
   @moduledoc """
   Axioms that a lawful isomorphism should satisfy. These are meant to be
-  used in property tests for custom isomorphisms constructed using `ConcreteOptics.Iso.mk_iso`.
+  used in property tests for custom isomorphisms constructed using `ConcreteOptics.Iso.new`.
   """
 
-  alias ConcreteOptics.Core
+  alias ConcreteOptics.Iso
 
-  @spec review_view(Core.t(S, T, A, B)) :: (S -> bool())
+  @spec review_view(Iso.t(S, T, A, B)) :: (S -> bool())
   @doc """
   The isomorphism law which states that applying review and then view yields the original value.
   """
@@ -104,7 +93,7 @@ defmodule ConcreteOptics.Iso.Axioms do
     end
   end
 
-  @spec view_review(Core.t(S, T, A, B)) :: (S -> bool())
+  @spec view_review(Iso.t(S, T, A, B)) :: (S -> bool())
   @doc """
   The isomorphism law which states that applying view and then review yields the original value.
   """
