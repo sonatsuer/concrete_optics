@@ -8,7 +8,7 @@
     <meta name="project" content="ConcreteOptics v0.1.0">
 
 
-    <title>ConcreteOptics.Iso.Axioms — ConcreteOptics v0.1.0</title>
+    <title>ConcreteOptics.Core.Compose — ConcreteOptics v0.1.0</title>
 
     <link rel="stylesheet" href="dist/html-elixir-RLZO5U2C.css" />
 
@@ -75,23 +75,18 @@ ConcreteOptics
 <div id="top-content">
   <div class="heading-with-actions top-heading">
     <h1>
-      <span translate="no">ConcreteOptics.Iso.Axioms</span> 
+      <span translate="no">ConcreteOptics.Core.Compose</span> 
       <small class="app-vsn" translate="no">(ConcreteOptics v0.1.0)</small>
 
     </h1>
 
-      <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/optics/iso.ex#L77" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/core/compose.ex#L1" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
 
   </div>
 
-
-    <section id="moduledoc">
-<p>Axioms that a lawful isomorphism should satisfy. These are meant to be
-used in property tests for custom isomorphisms constructed using <code class="inline">ConcreteOptics.Iso.new</code>.</p>
-    </section>
 
 </div>
 
@@ -109,21 +104,19 @@ used in property tests for custom isomorphisms constructed using <code class="in
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#review_view/1" data-no-tooltip="" translate="no">review_view(optic)</a>
+        <a href="#extract_fields!/1" data-no-tooltip="" translate="no">extract_fields!(module)</a>
 
       </div>
-
-        <div class="summary-synopsis"><p>The isomorphism law which states that applying review and then view yields the original value.</p></div>
 
     </div>
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#view_review/1" data-no-tooltip="" translate="no">view_review(optic)</a>
+        <a href="#generate_compose/4" data-no-tooltip="" translate="no">generate_compose(optics_root, capability_module, module1, module2)</a>
 
       </div>
 
-        <div class="summary-synopsis"><p>The isomorphism law which states that applying view and then review yields the original value.</p></div>
+        <div class="summary-synopsis"></div>
 
     </div>
 
@@ -141,17 +134,17 @@ used in property tests for custom isomorphisms constructed using <code class="in
     </h1>
 
     <div class="functions-list">
-<section class="detail" id="review_view/1">
+<section class="detail" id="extract_fields!/1">
 
   <div class="detail-header">
-    <a href="#review_view/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+    <a href="#extract_fields!/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
     <div class="heading-with-actions">
-      <h1 class="signature" translate="no">review_view(optic)</h1>
+      <h1 class="signature" translate="no">extract_fields!(module)</h1>
 
 
-        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/optics/iso.ex#L89" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/core/compose.ex#L4" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -160,26 +153,22 @@ used in property tests for custom isomorphisms constructed using <code class="in
 
   <section class="docstring">
 
-      <div class="specs">
 
-          <pre translate="no"><span class="attribute">@spec</span> review_view(ConcreteOptics.Iso.t(S, T, A, B)) :: (S -&gt; bool())</pre>
-
-      </div>
-
-<p>The isomorphism law which states that applying review and then view yields the original value.</p>
   </section>
 </section>
-<section class="detail" id="view_review/1">
+<section class="detail" id="generate_compose/4">
 
   <div class="detail-header">
-    <a href="#view_review/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+    <a href="#generate_compose/4" class="detail-link" data-no-tooltip="" aria-label="Link to this macro">
       <i class="ri-link-m" aria-hidden="true"></i>
     </a>
     <div class="heading-with-actions">
-      <h1 class="signature" translate="no">view_review(optic)</h1>
+      <h1 class="signature" translate="no">generate_compose(optics_root, capability_module, module1, module2)</h1>
+
+        <span class="note">(macro)</span>
 
 
-        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/optics/iso.ex#L102" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/core/compose.ex#L31" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -188,13 +177,7 @@ used in property tests for custom isomorphisms constructed using <code class="in
 
   <section class="docstring">
 
-      <div class="specs">
 
-          <pre translate="no"><span class="attribute">@spec</span> view_review(ConcreteOptics.Iso.t(S, T, A, B)) :: (S -&gt; bool())</pre>
-
-      </div>
-
-<p>The isomorphism law which states that applying view and then review yields the original value.</p>
   </section>
 </section>
 

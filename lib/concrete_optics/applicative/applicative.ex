@@ -1,11 +1,12 @@
-defmodule ConcreteOptics.Applicative do
+defmodule ConcreteOptics.Applicative.Specs do
   @moduledoc """
   A module which defines an macro to generate types for an applicative interface.
   The macro assumes that the caller module defines a type `t/1` for the applicatives
   values and three specs for functions named `pure`, `lift1` and `lift2`.
   """
+  defstruct [:pure, :lift1, :lift2]
 
-  defmacro __using__(_opts) do
+  defmacro (_opts) do
     caller_module = __CALLER__.module
 
     quote do
@@ -17,12 +18,12 @@ defmodule ConcreteOptics.Applicative do
   end
 end
 
-defmodule ConcreteOptics.Applicative.Id do
+defmodule ConcreteOptics.Applicative.Implementations do
   @moduledoc """
   The identity applicative without a wrapper. all operations are essentially noop.
   """
   @type t(a) :: a
-  use ConcreteOptics.Applicative
+  use ConcreteOptics.Algebra.Applicative
 
   def pure(a) do
     a

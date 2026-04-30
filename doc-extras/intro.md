@@ -28,16 +28,17 @@ Here is a table which classifies optics in terms of their capabilities.
 
 |               |  view | to_list| review | over | traverse |
 | ------------- |:-----:|:------:|:------:|:----:|:--------:|
-| isomorphism   |   ✓   |    ✓   |   ✓    |  ✓   |    ✓     |
+| iso           |   ✓   |    ✓   |   ✓    |  ✓   |    ✓     |
 | lens          |   ✓   |    ✓   |        |  ✓   |    ✓     |
 | prism         |       |    ✓   |   ✓    |  ✓   |    ✓     |
 | traversal     |       |    ✓   |        |  ✓   |    ✓     |
+| getter        |   ✓   |    ✓   |        |      |          |
+| setter        |       |        |        |  ✓   |          |
+| fold          |       |    ✓   |        |      |          |
 
 When we compose two optics, we compose their corresponding capabilities. If a capability is not a common capability of the optics then it is lost. For instance composition of two optics of the same kind is another of the same kind. An optic and its composition with an isomorphism are of the same kind since isomorphisms have all the capabilities. But the composition of a prism and a lens is a traversal.
 
 ## What is Missing
-
-This framework can easily support the optics `getter` (which has `view` and `to_list`), `setter` (which has `over`) and `fold` (which has `to_list`). I omitted them since they are not as useful.
 
 There is a general notion of duality in optics where you change the roles of the whole and the piece. For instance the function `invert_iso` is an implementation of this idea. However, in this capability only formalism, it is not possible to invert, say, a prism twice and get the original prism. The system can certainly be expanded to support this, though.
 

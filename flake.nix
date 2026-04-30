@@ -2,7 +2,7 @@
   description = "Development environment for Elixir.";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -10,20 +10,16 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        erlangVersion = pkgs.erlang_27;
-        erlangPackages = pkgs.beam.packagesWith erlangVersion;
-        elixir = erlangPackages.elixir;
-        elixir-ls = erlangPackages.elixir-ls;
-        ex_doc = erlangPackages.ex_doc;
-
+        beamPkgs = pkgs.beam.packages.erlang_28;
       in
       {
-        devShell = pkgs.mkShell {
-          packages = [
-            elixir
-            elixir-ls
-            ex_doc
-            erlangVersion
+        devShell.default = pkgs.mkShell {
+          name = "Elixir Shell";
+          nativeBuildInputs = [
+            beamPkgs.erlang
+            beamPkgs.elixir_1_20
+            beamPkgs.elixir-ls
+            beamPkgs.elixir-ls
             pkgs.git
             pkgs.fish
           ];
@@ -42,7 +38,6 @@
             echo "------------------------"
           '';
 
-          nativeBuildInputs = [];
         };
       });
 }

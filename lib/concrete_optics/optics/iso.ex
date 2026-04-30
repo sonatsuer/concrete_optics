@@ -1,9 +1,11 @@
-defmodule ConcreteOptics.Iso do
+defmodule ConcreteOptics.Optics.Iso do
   @moduledoc """
   Isomorphism as an optic.
   """
+
+  alias ConcreteOptics.Optics.Iso
+
   use ConcreteOptics.Core.Common, capabilities: [:view, :review, :over, :to_list, :traverse]
-  alias ConcreteOptics.Iso
 
   @doc """
   Constructs an isomorphism from given `view` and `review` functions.

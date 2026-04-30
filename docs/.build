@@ -1,10 +1,11 @@
 404.html
-ConcreteOptics.Applicative.Id.html
-ConcreteOptics.Applicative.html
+ConcreteOptics.Algebra.Applicative.Id.html
+ConcreteOptics.Algebra.Applicative.html
 ConcreteOptics.Core.Capabilities.html
 ConcreteOptics.Core.Common.html
+ConcreteOptics.Core.Compose.html
 ConcreteOptics.Iso.Axioms.html
-ConcreteOptics.Iso.html
+ConcreteOptics.Optics.Iso.html
 ConcreteOptics.html
 dist/html-Y223O6DN.js
 dist/html-elixir-RLZO5U2C.css
@@ -13,8 +14,8 @@ dist/lato-latin-700-normal-2XVSBPG4.woff2
 dist/lato-latin-ext-400-normal-N27NCBWW.woff2
 dist/lato-latin-ext-700-normal-Q2L5DVMW.woff2
 dist/remixicon-QPNJX265.woff2
-dist/search_data-77571D63.js
-dist/sidebar_items-AA6FE40E.js
+dist/search_data-580CA62B.js
+dist/sidebar_items-D7AA3457.js
 index.html
 intro.html
 search.html

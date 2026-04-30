@@ -1,4 +1,4 @@
-defmodule ConcreteOptics.IsoTest do
+defmodule ConcreteOptics.Optics.IsoTest do
   use ExUnit.Case, async: true
   use ExUnitProperties
   alias ConcreteOptics.Iso.Axioms
@@ -13,7 +13,7 @@ defmodule ConcreteOptics.IsoTest do
       n -> n - 1
     end
 
-    ConcreteOptics.new(increase, decrease)
+    ConcreteOptics.Iso.new(increase, decrease)
   end
 
   property "shift_iso is an iso" do
@@ -33,4 +33,15 @@ defmodule ConcreteOptics.IsoTest do
       assert composite().review.(n) === n, "review should be id"
     end
   end
+end
+
+defmodule Validator do
+  # 1. Define the sets (Closed Maps)
+  @type success(a) :: %{status: :ready, data: a}
+  @type failure :: %{status: :error, reason: String.t()}
+
+  # 2. Use a Union in the spec
+  @spec check(success(a) | failure) :: a | :failed
+  def check(%{status: :ready, data: val}), do: val
+  def check(%{status: :error}), do: :failed
 end
