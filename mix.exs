@@ -8,7 +8,7 @@ defmodule ConcreteOptics.MixProject do
       app: :concrete_optics,
       description: "Simple minded optics implementation",
       version: "0.1.0",
-      elixir: "~> 1.18.4",
+      elixir: "~> 1.20.0-rc.4",
       deps: deps(),
       package: package(),
       elixirc_paths: elixirc_paths(),

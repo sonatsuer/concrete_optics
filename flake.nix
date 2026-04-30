@@ -13,7 +13,7 @@
         beamPkgs = pkgs.beam.packages.erlang_28;
       in
       {
-        devShell.default = pkgs.mkShell {
+        devShells.default = pkgs.mkShell {
           name = "Elixir Shell";
           nativeBuildInputs = [
             beamPkgs.erlang
@@ -24,13 +24,16 @@
             pkgs.fish
           ];
 
-           shellHook = ''
+          shellHook = ''
             export LANG=en_US.UTF-8
             export ELIXIR_ERL_OPTIONS="+fnu"
             export PROJECT_ROOT=$(pwd)
             export MIX_HOME=$PROJECT_ROOT/.nix-mix
             export HEX_HOME=$PROJECT_ROOT/.nix-hex
             mkdir -p $MIX_HOME $HEX_HOME
+
+            mix local.hex --if-missing --force
+            mix local.rebar --if-missing --force
 
             echo "Elixir Development Shell"
             echo "------------------------"
