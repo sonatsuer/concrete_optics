@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="dist/html-elixir-RLZO5U2C.css" />
 
-    <script defer src="dist/sidebar_items-5FCB80D4.js"></script>
+    <script defer src="dist/sidebar_items-87AFBCAF.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-Y223O6DN.js"></script>
 
@@ -89,12 +89,463 @@ ConcreteOptics
 
 
     <section id="moduledoc">
-<p>Mostly a re-export module for convenience. Includes all standard optics,
-optic constructors, derived capabilities and optic axioms.</p>
+<p>A simple capability-based optics library.</p><p>Each optic is a struct whose fields are the capabilities it supports:</p><table><thead><tr><th style="text-align: left;">Optic</th><th style="text-align: center;">view</th><th style="text-align: center;">to_list</th><th style="text-align: center;">review</th><th style="text-align: center;">over</th><th style="text-align: center;">traverse</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">Iso</code></td><td style="text-align: center;">✓</td><td style="text-align: center;">✓</td><td style="text-align: center;">✓</td><td style="text-align: center;">✓</td><td style="text-align: center;">✓</td></tr><tr><td style="text-align: left;"><code class="inline">Lens</code></td><td style="text-align: center;">✓</td><td style="text-align: center;">✓</td><td style="text-align: center;"></td><td style="text-align: center;">✓</td><td style="text-align: center;">✓</td></tr><tr><td style="text-align: left;"><code class="inline">Prism</code></td><td style="text-align: center;"></td><td style="text-align: center;">✓</td><td style="text-align: center;">✓</td><td style="text-align: center;">✓</td><td style="text-align: center;">✓</td></tr><tr><td style="text-align: left;"><code class="inline">Traversal</code></td><td style="text-align: center;"></td><td style="text-align: center;">✓</td><td style="text-align: center;"></td><td style="text-align: center;">✓</td><td style="text-align: center;">✓</td></tr><tr><td style="text-align: left;"><code class="inline">Getter</code></td><td style="text-align: center;">✓</td><td style="text-align: center;">✓</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr><tr><td style="text-align: left;"><code class="inline">Setter</code></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;">✓</td><td style="text-align: center;"></td></tr><tr><td style="text-align: left;"><code class="inline">Fold</code></td><td style="text-align: center;"></td><td style="text-align: center;">✓</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr></tbody></table><h2 id="module-constructors" class="section-heading"><a href="#module-constructors" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Constructors</span></h2><ul><li><a href="#mk_iso/2"><code class="inline">mk_iso/2</code></a>       — build an <code class="inline">Iso</code> from view + review</li><li><a href="#mk_lens/2"><code class="inline">mk_lens/2</code></a>      — build a <code class="inline">Lens</code> from view + update</li><li><a href="#mk_prism/2"><code class="inline">mk_prism/2</code></a>     — build a <code class="inline">Prism</code> from review + match (<code class="inline">{:ok,a}|{:no_match,t}</code>)</li><li><a href="#mk_prism_/2"><code class="inline">mk_prism_/2</code></a>    — simplified type-preserving prism (<code class="inline">:no_match</code> variant)</li><li><a href="#mk_traversal/1"><code class="inline">mk_traversal/1</code></a> — build a <code class="inline">Traversal</code> from a van-Laarhoven traverse function</li><li><a href="#mk_getter/1"><code class="inline">mk_getter/1</code></a>    — build a <code class="inline">Getter</code> from a view function</li><li><a href="#mk_setter/1"><code class="inline">mk_setter/1</code></a>    — build a <code class="inline">Setter</code> from an over function</li><li><a href="#folding/1"><code class="inline">folding/1</code></a>      — build a <code class="inline">Fold</code> from a <code class="inline">s -&gt; [a]</code> function</li></ul><h2 id="module-composition" class="section-heading"><a href="#module-composition" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Composition</span></h2><ul><li><a href="#compose/2"><code class="inline">compose/2</code></a>      — compose two optics (result type = capability intersection)</li><li><a href="#compose_all/1"><code class="inline">compose_all/1</code></a>  — compose a non-empty list of optics left-to-right</li></ul><h2 id="module-applicative-and-monoid-records" class="section-heading"><a href="#module-applicative-and-monoid-records" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Applicative and Monoid records</span></h2><p>Used with the <code class="inline">traverse</code> capability:</p><ul><li><a href="ConcreteOptics.Applicative.html#identity/0"><code class="inline">ConcreteOptics.Applicative.identity/0</code></a></li><li><a href="ConcreteOptics.Applicative.html#const_monoid/1"><code class="inline">ConcreteOptics.Applicative.const_monoid/1</code></a></li><li><a href="ConcreteOptics.Monoid.html#list_monoid/0"><code class="inline">ConcreteOptics.Monoid.list_monoid/0</code></a></li></ul>
     </section>
 
 </div>
 
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#compose/2" data-no-tooltip="" translate="no">compose(o1, o2)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Compose two optics.  The result type equals the capability intersection.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#compose_all/1" data-no-tooltip="" translate="no">compose_all(optics)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Compose a non-empty list of optics left-to-right.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#folding/1" data-no-tooltip="" translate="no">folding(to_list_fn)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Build a <code class="inline">Fold s a</code> from <code class="inline">to_list_fn : s -&gt; [a]</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#invert_iso/1" data-no-tooltip="" translate="no">invert_iso(iso)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Invert an isomorphism, swapping <code class="inline">view</code> and <code class="inline">review</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#iso_identity/0" data-no-tooltip="" translate="no">iso_identity()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>The identity isomorphism.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#mk_getter/1" data-no-tooltip="" translate="no">mk_getter(view)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Build a <code class="inline">Getter s a</code> from <code class="inline">view : s -&gt; a</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#mk_iso/2" data-no-tooltip="" translate="no">mk_iso(view, review)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Build an <code class="inline">Iso s t a b</code> from <code class="inline">view : s -&gt; a</code> and <code class="inline">review : b -&gt; t</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#mk_lens/2" data-no-tooltip="" translate="no">mk_lens(view, update)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Build a <code class="inline">Lens s t a b</code> from <code class="inline">view : s -&gt; a</code> and <code class="inline">update : s -&gt; b -&gt; t</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#mk_prism/2" data-no-tooltip="" translate="no">mk_prism(review, match)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Build a <code class="inline">Prism s t a b</code> from <code class="inline">review : b -&gt; t</code> and
+<code class="inline">match : s -&gt; {:ok, a} | {:no_match, t}</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#mk_prism_/2" data-no-tooltip="" translate="no">mk_prism_(review, match)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Build a type-preserving <code class="inline">Prism s s a b</code> from <code class="inline">review : b -&gt; s</code> and
+<code class="inline">match : s -&gt; {:ok, a} | :no_match</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#mk_setter/1" data-no-tooltip="" translate="no">mk_setter(over_fn)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Build a <code class="inline">Setter s t a b</code> from <code class="inline">over_fn : (a -&gt; b) -&gt; s -&gt; t</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#mk_traversal/1" data-no-tooltip="" translate="no">mk_traversal(traverse_fn)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Build a <code class="inline">Traversal s t a b</code> from a van-Laarhoven traverse function
+<code class="inline">ap -&gt; (a -&gt; f b) -&gt; (s -&gt; f t)</code>.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#transport/2" data-no-tooltip="" translate="no">transport(iso, f)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Transport a function across an isomorphism.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+
+    <div class="functions-list">
+<section class="detail" id="compose/2">
+
+  <div class="detail-header">
+    <a href="#compose/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">compose(o1, o2)</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics.ex#L151" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Compose two optics.  The result type equals the capability intersection.</p><p>See <a href="ConcreteOptics.Compose.html#compose/2"><code class="inline">ConcreteOptics.Compose.compose/2</code></a> for the full dispatch table and
+error behaviour on incompatible pairs.</p>
+  </section>
+</section>
+<section class="detail" id="compose_all/1">
+
+  <div class="detail-header">
+    <a href="#compose_all/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">compose_all(optics)</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics.ex#L158" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Compose a non-empty list of optics left-to-right.</p><p>See <a href="ConcreteOptics.Compose.html#compose_all/1"><code class="inline">ConcreteOptics.Compose.compose_all/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="folding/1">
+
+  <div class="detail-header">
+    <a href="#folding/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">folding(to_list_fn)</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics.ex#L141" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Build a <code class="inline">Fold s a</code> from <code class="inline">to_list_fn : s -&gt; [a]</code>.</p><p>See <a href="ConcreteOptics.Fold.html#new/1"><code class="inline">ConcreteOptics.Fold.new/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="invert_iso/1">
+
+  <div class="detail-header">
+    <a href="#invert_iso/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">invert_iso(iso)</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics.ex#L63" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Invert an isomorphism, swapping <code class="inline">view</code> and <code class="inline">review</code>.</p><p>See <a href="ConcreteOptics.Iso.html#invert/1"><code class="inline">ConcreteOptics.Iso.invert/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="iso_identity/0">
+
+  <div class="detail-header">
+    <a href="#iso_identity/0" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">iso_identity()</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics.ex#L70" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>The identity isomorphism.</p><p>See <a href="ConcreteOptics.Iso.html#identity/0"><code class="inline">ConcreteOptics.Iso.identity/0</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="mk_getter/1">
+
+  <div class="detail-header">
+    <a href="#mk_getter/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">mk_getter(view)</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics.ex#L123" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Build a <code class="inline">Getter s a</code> from <code class="inline">view : s -&gt; a</code>.</p><p>See <a href="ConcreteOptics.Getter.html#new/1"><code class="inline">ConcreteOptics.Getter.new/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="mk_iso/2">
+
+  <div class="detail-header">
+    <a href="#mk_iso/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">mk_iso(view, review)</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics.ex#L56" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Build an <code class="inline">Iso s t a b</code> from <code class="inline">view : s -&gt; a</code> and <code class="inline">review : b -&gt; t</code>.</p><p>See <a href="ConcreteOptics.Iso.html#new/2"><code class="inline">ConcreteOptics.Iso.new/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="mk_lens/2">
+
+  <div class="detail-header">
+    <a href="#mk_lens/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">mk_lens(view, update)</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics.ex#L86" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Build a <code class="inline">Lens s t a b</code> from <code class="inline">view : s -&gt; a</code> and <code class="inline">update : s -&gt; b -&gt; t</code>.</p><p>See <a href="ConcreteOptics.Lens.html#new/2"><code class="inline">ConcreteOptics.Lens.new/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="mk_prism/2">
+
+  <div class="detail-header">
+    <a href="#mk_prism/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">mk_prism(review, match)</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics.ex#L96" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Build a <code class="inline">Prism s t a b</code> from <code class="inline">review : b -&gt; t</code> and
+<code class="inline">match : s -&gt; {:ok, a} | {:no_match, t}</code>.</p><p>See <a href="ConcreteOptics.Prism.html#new/2"><code class="inline">ConcreteOptics.Prism.new/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="mk_prism_/2">
+
+  <div class="detail-header">
+    <a href="#mk_prism_/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">mk_prism_(review, match)</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics.ex#L104" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Build a type-preserving <code class="inline">Prism s s a b</code> from <code class="inline">review : b -&gt; s</code> and
+<code class="inline">match : s -&gt; {:ok, a} | :no_match</code>.</p><p>See <a href="ConcreteOptics.Prism.html#new_/2"><code class="inline">ConcreteOptics.Prism.new_/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="mk_setter/1">
+
+  <div class="detail-header">
+    <a href="#mk_setter/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">mk_setter(over_fn)</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics.ex#L132" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Build a <code class="inline">Setter s t a b</code> from <code class="inline">over_fn : (a -&gt; b) -&gt; s -&gt; t</code>.</p><p>See <a href="ConcreteOptics.Setter.html#new/1"><code class="inline">ConcreteOptics.Setter.new/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="mk_traversal/1">
+
+  <div class="detail-header">
+    <a href="#mk_traversal/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">mk_traversal(traverse_fn)</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics.ex#L114" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Build a <code class="inline">Traversal s t a b</code> from a van-Laarhoven traverse function
+<code class="inline">ap -&gt; (a -&gt; f b) -&gt; (s -&gt; f t)</code>.</p><p>See <a href="ConcreteOptics.Traversal.html#new/1"><code class="inline">ConcreteOptics.Traversal.new/1</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="transport/2">
+
+  <div class="detail-header">
+    <a href="#transport/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">transport(iso, f)</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics.ex#L77" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Transport a function across an isomorphism.</p><p>See <a href="ConcreteOptics.Iso.html#transport/2"><code class="inline">ConcreteOptics.Iso.transport/2</code></a>.</p>
+  </section>
+</section>
+
+    </div>
+  </section>
 
     <footer class="footer">
       <p>

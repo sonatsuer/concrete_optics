@@ -8,9 +8,7 @@
     <meta name="project" content="ConcreteOptics v0.1.0">
 
 
-      <meta name="robots" content="noindex">
-
-    <title>Search — ConcreteOptics v0.1.0</title>
+    <title>ConcreteOptics.Fold — ConcreteOptics v0.1.0</title>
 
     <link rel="stylesheet" href="dist/html-elixir-RLZO5U2C.css" />
 
@@ -49,7 +47,7 @@ ConcreteOptics
 
 <output role="status" id="toast"></output>
 
-<main class="content page-search" id="main" data-type="search">
+<main class="content page-module" id="main" data-type="modules">
   <div id="content" class="content-inner">
     <div class="top-search">
       <div class="search-settings">
@@ -74,14 +72,93 @@ ConcreteOptics
       </div>
     </div>
 
-<div id="search">
-  <h1>
-    <span></span>
-  </h1>
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>
+      <span translate="no">ConcreteOptics.Fold</span> 
+      <small class="app-vsn" translate="no">(ConcreteOptics v0.1.0)</small>
 
-  <div class="loading"><div></div><div></div><div></div><div></div></div>
+    </h1>
+
+      <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/fold.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+    <section id="moduledoc">
+<p>Fold — <code class="inline">Fold s a</code>.</p><p>A fold extracts zero or more elements from a structure, read-only.  It is
+the read-only analogue of a traversal: it can list focused elements but
+cannot modify them.</p><h2 id="module-capabilities" class="section-heading"><a href="#module-capabilities" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Capabilities</span></h2><table><thead><tr><th style="text-align: center;">view</th><th style="text-align: center;">to_list</th><th style="text-align: center;">review</th><th style="text-align: center;">over</th><th style="text-align: center;">traverse</th></tr></thead><tbody><tr><td style="text-align: center;"></td><td style="text-align: center;">✓</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td></tr></tbody></table><h2 id="module-fields" class="section-heading"><a href="#module-fields" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Fields</span></h2><ul><li><code class="inline">to_list</code> — <code class="inline">s -&gt; [a]</code></li></ul>
+    </section>
+
 </div>
-<script src="dist/search_data-5C46D77D.js"></script>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#new/1" data-no-tooltip="" translate="no">new(to_list_fn)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Construct a <code class="inline">Fold s a</code> from a function <code class="inline">s -&gt; [a]</code>.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+
+    <div class="functions-list">
+<section class="detail" id="new/1">
+
+  <div class="detail-header">
+    <a href="#new/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">new(to_list_fn)</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/fold.ex#L29" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p>Construct a <code class="inline">Fold s a</code> from a function <code class="inline">s -&gt; [a]</code>.</p><p>Corresponds to Haskell's <code class="inline">folding :: Foldable f =&gt; (s -&gt; f a) -&gt; Fold s a</code>
+(specialised to lists as the foldable).</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
     <footer class="footer">
       <p>
 

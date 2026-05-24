@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.38.4">
+    <meta name="project" content="ConcreteOptics v0.1.0">
+
+
+    <title>ConcreteOptics.Traversal.Laws — ConcreteOptics v0.1.0</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-RLZO5U2C.css" />
+
+    <script defer src="dist/sidebar_items-87AFBCAF.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-Y223O6DN.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="https://sonatsuer.github.io/concrete_optics/ConcreteOptics.html" class="sidebar-projectName" translate="no">
+ConcreteOptics
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.1.0
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras=""></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-module" id="main" data-type="modules">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of ConcreteOptics</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search" tabindex="-1">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>
+      <span translate="no">ConcreteOptics.Traversal.Laws</span> 
+      <small class="app-vsn" translate="no">(ConcreteOptics v0.1.0)</small>
+
+    </h1>
+
+      <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/traversal_laws.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+    <section id="moduledoc">
+<p>Well-formedness laws for <a href="ConcreteOptics.Traversal.html"><code class="inline">ConcreteOptics.Traversal</code></a>.</p><p>The Haskell optics-core library states the traversal laws in terms of the
+van Laarhoven representation:</p><ul><li><strong>Identity</strong> — <code class="inline">traverseOf o pure ≡ pure</code></li><li><strong>Composition</strong> — <code class="inline">fmap (traverseOf o f) . traverseOf o g ≡ getCompose . traverseOf o (Compose . fmap f . g)</code></li></ul><p>Both laws imply — and are implied by — functor laws on <code class="inline">over</code>:</p><ul><li><strong>Identity</strong> implies <code class="inline">over(id) ≡ id</code></li><li><strong>Composition</strong> implies <code class="inline">over(f ∘ g) ≡ over(f) ∘ over(g)</code> (i.e. <code class="inline">over</code> is a functor map)</li></ul><p>We test these two <code class="inline">over</code>-based conditions because they are directly expressible
+in Elixir without needing a Compose applicative. They are <em>necessary</em> conditions
+for a valid traversal. Note that any traversal built with <code class="inline">mk_traversal/1</code> from a
+lawful van Laarhoven function already satisfies the full traversal laws.</p><h2 id="module-usage-in-a-property-test" class="section-heading"><a href="#module-usage-in-a-property-test" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Usage in a property test</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">property</span><span class="w"> </span><span class="s">&quot;list_traversal is well-formed&quot;</span><span class="w"> </span><span class="k" data-group-id="2675064710-1">do</span><span class="w">
+  </span><span class="n">check</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">list_of</span><span class="p" data-group-id="2675064710-2">(</span><span class="n">integer</span><span class="p" data-group-id="2675064710-3">(</span><span class="p" data-group-id="2675064710-3">)</span><span class="p" data-group-id="2675064710-2">)</span><span class="w"> </span><span class="k" data-group-id="2675064710-4">do</span><span class="w">
+    </span><span class="n">assert</span><span class="w"> </span><span class="nc">ConcreteOptics.Traversal.Laws</span><span class="o">.</span><span class="n">over_identity</span><span class="p" data-group-id="2675064710-5">(</span><span class="n">my_traversal</span><span class="p" data-group-id="2675064710-6">(</span><span class="p" data-group-id="2675064710-6">)</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p" data-group-id="2675064710-5">)</span><span class="w">
+  </span><span class="k" data-group-id="2675064710-4">end</span><span class="w">
+
+  </span><span class="n">check</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">list_of</span><span class="p" data-group-id="2675064710-7">(</span><span class="n">integer</span><span class="p" data-group-id="2675064710-8">(</span><span class="p" data-group-id="2675064710-8">)</span><span class="p" data-group-id="2675064710-7">)</span><span class="w"> </span><span class="k" data-group-id="2675064710-9">do</span><span class="w">
+    </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k" data-group-id="2675064710-10">fn</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k" data-group-id="2675064710-10">end</span><span class="w">
+    </span><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k" data-group-id="2675064710-11">fn</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k" data-group-id="2675064710-11">end</span><span class="w">
+    </span><span class="n">assert</span><span class="w"> </span><span class="nc">ConcreteOptics.Traversal.Laws</span><span class="o">.</span><span class="n">over_composition</span><span class="p" data-group-id="2675064710-12">(</span><span class="n">my_traversal</span><span class="p" data-group-id="2675064710-13">(</span><span class="p" data-group-id="2675064710-13">)</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p" data-group-id="2675064710-12">)</span><span class="w">
+  </span><span class="k" data-group-id="2675064710-9">end</span><span class="w">
+</span><span class="k" data-group-id="2675064710-1">end</span></code></pre>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#over_composition/4" data-no-tooltip="" translate="no">over_composition(traversal, f, g, s)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p><strong>OverComposition</strong> — <code class="inline">over(f ∘ g) ≡ over(f) ∘ over(g)</code></p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#over_identity/2" data-no-tooltip="" translate="no">over_identity(traversal, s)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p><strong>OverIdentity</strong> — <code class="inline">over(id) ≡ id</code></p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+
+    <div class="functions-list">
+<section class="detail" id="over_composition/4">
+
+  <div class="detail-header">
+    <a href="#over_composition/4" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">over_composition(traversal, f, g, s)</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/traversal_laws.ex#L63" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p><strong>OverComposition</strong> — <code class="inline">over(f ∘ g) ≡ over(f) ∘ over(g)</code></p><p>Applying <code class="inline">over</code> with a composed function is the same as applying <code class="inline">over</code> with
+each function in sequence. Equivalently: <code class="inline">over</code> is a functor map on the
+endomorphisms of the focused type.</p><p><code class="inline">traversal.over.(fn x -&gt; f.(g.(x)) end).(s) == traversal.over.(f).(traversal.over.(g).(s))</code></p><p>Quantified over all <code class="inline">s : S</code>, <code class="inline">f : B -&gt; C</code>, <code class="inline">g : A -&gt; B</code>.
+Note: for the type-preserving case <code class="inline">A = B = C</code>.</p>
+  </section>
+</section>
+<section class="detail" id="over_identity/2">
+
+  <div class="detail-header">
+    <a href="#over_identity/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">over_identity(traversal, s)</h1>
+
+
+        <a href="https://github.com/sonatsuer/concrete_optics/blob/main/lib/concrete_optics/traversal_laws.ex#L47" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+<p><strong>OverIdentity</strong> — <code class="inline">over(id) ≡ id</code></p><p>Applying <code class="inline">over</code> with the identity function leaves the structure unchanged.</p><p><code class="inline">traversal.over.(fn x -&gt; x end).(s) == s</code></p><p>Quantified over all <code class="inline">s : S</code>.</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/concrete_optics/0.1.0" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/concrete_optics/0.1.0">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.38.4) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

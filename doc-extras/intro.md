@@ -43,3 +43,6 @@ When we compose two optics, we compose their corresponding capabilities. If a ca
 There is a general notion of duality in optics where you change the roles of the whole and the piece. For instance the function `invert_iso` is an implementation of this idea. However, in this capability only formalism, it is not possible to invert, say, a prism twice and get the original prism. The system can certainly be expanded to support this, though.
 
 Exotic optics like grates or achromatic lenses are not implemented because, well, they are exotic and implementing them  would require a change in the current design which is dead simple.
+
+Also, type annotations are missing as elixir does not support them yet. I will keep updating the library as
+more of the features from the set theoretic types roadmap are implemented. 
