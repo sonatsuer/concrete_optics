@@ -1,8 +1,6 @@
 defmodule ConcreteOpticsTest do
   @moduledoc """
   This test file also serves as a showcase of the ConcreteOptics library.
-  It is a translation of a similar Clojure showcase written for an earlier
-  version of the library.
   """
 
   use ExUnit.Case, async: true
